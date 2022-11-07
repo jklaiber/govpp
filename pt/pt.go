@@ -1,3 +1,11 @@
+/*
+ * SR PT test file
+ * Generate the api files with the following command (in govpp/cmd/binapi-generator):
+ * go run main.go --input-file=/home/jklaiber/vpp/build-root/install-vpp_debug-native/vpp/share/vpp/api/core/sr_pt.api.json --output-dir=/home/jklaiber/govpp/binapi --input-dir=/home/jklaiber/vpp/build-root/install-vpp_debug-native/vpp/share/vpp/api/
+ *
+ * Build with: go build -o ./pt pt.go
+ * Run with sudo ./pt
+ */
 package main
 
 import (
