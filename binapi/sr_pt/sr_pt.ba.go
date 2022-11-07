@@ -25,7 +25,7 @@ const _ = api.GoVppAPIPackageIsVersion2
 const (
 	APIFile    = "sr_pt"
 	APIVersion = "1.0.0"
-	VersionCrc = 0x13925d64
+	VersionCrc = 0x1fddedad
 )
 
 // SrPtIfaceAdd defines message 'sr_pt_iface_add'.
@@ -178,7 +178,7 @@ func (m *SrPtIfaceDelReply) Unmarshal(b []byte) error {
 
 // SrPtIfaceDetails defines message 'sr_pt_iface_details'.
 type SrPtIfaceDetails struct {
-	Iface       interface_types.InterfaceIndex `binapi:"interface_index,name=iface" json:"iface,omitempty"`
+	SwIfIndex   interface_types.InterfaceIndex `binapi:"interface_index,name=sw_if_index" json:"sw_if_index,omitempty"`
 	ID          uint16                         `binapi:"u16,name=id" json:"id,omitempty"`
 	IngressLoad uint8                          `binapi:"u8,name=ingress_load" json:"ingress_load,omitempty"`
 	EgressLoad  uint8                          `binapi:"u8,name=egress_load" json:"egress_load,omitempty"`
@@ -187,7 +187,7 @@ type SrPtIfaceDetails struct {
 
 func (m *SrPtIfaceDetails) Reset()               { *m = SrPtIfaceDetails{} }
 func (*SrPtIfaceDetails) GetMessageName() string { return "sr_pt_iface_details" }
-func (*SrPtIfaceDetails) GetCrcString() string   { return "763f177f" }
+func (*SrPtIfaceDetails) GetCrcString() string   { return "1f472f85" }
 func (*SrPtIfaceDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
@@ -196,7 +196,7 @@ func (m *SrPtIfaceDetails) Size() (size int) {
 	if m == nil {
 		return 0
 	}
-	size += 4 // m.Iface
+	size += 4 // m.SwIfIndex
 	size += 2 // m.ID
 	size += 1 // m.IngressLoad
 	size += 1 // m.EgressLoad
@@ -208,7 +208,7 @@ func (m *SrPtIfaceDetails) Marshal(b []byte) ([]byte, error) {
 		b = make([]byte, m.Size())
 	}
 	buf := codec.NewBuffer(b)
-	buf.EncodeUint32(uint32(m.Iface))
+	buf.EncodeUint32(uint32(m.SwIfIndex))
 	buf.EncodeUint16(m.ID)
 	buf.EncodeUint8(m.IngressLoad)
 	buf.EncodeUint8(m.EgressLoad)
@@ -217,7 +217,7 @@ func (m *SrPtIfaceDetails) Marshal(b []byte) ([]byte, error) {
 }
 func (m *SrPtIfaceDetails) Unmarshal(b []byte) error {
 	buf := codec.NewBuffer(b)
-	m.Iface = interface_types.InterfaceIndex(buf.DecodeUint32())
+	m.SwIfIndex = interface_types.InterfaceIndex(buf.DecodeUint32())
 	m.ID = buf.DecodeUint16()
 	m.IngressLoad = buf.DecodeUint8()
 	m.EgressLoad = buf.DecodeUint8()
@@ -258,7 +258,7 @@ func file_sr_pt_binapi_init() {
 	api.RegisterMessage((*SrPtIfaceAddReply)(nil), "sr_pt_iface_add_reply_e8d4e804")
 	api.RegisterMessage((*SrPtIfaceDel)(nil), "sr_pt_iface_del_f9e6675e")
 	api.RegisterMessage((*SrPtIfaceDelReply)(nil), "sr_pt_iface_del_reply_e8d4e804")
-	api.RegisterMessage((*SrPtIfaceDetails)(nil), "sr_pt_iface_details_763f177f")
+	api.RegisterMessage((*SrPtIfaceDetails)(nil), "sr_pt_iface_details_1f472f85")
 	api.RegisterMessage((*SrPtIfaceDump)(nil), "sr_pt_iface_dump_51077d14")
 }
 
